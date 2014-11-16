@@ -1,0 +1,98 @@
+Version 1.5[October 3, 2010]
+					- Changed to dynamic memory allocation
+					for everything so there are no more
+					limits on the sizes of profiles or
+					song titles.
+					- Properly converting international
+					characters so they don't just show up
+					as a question mark. (Thanks to George
+					S for the tip)
+
+Version 1.4[September 24, 2008]
+					- Fixed bug where Pidgin would crash if it got disconnected
+
+Version 1.3[May 29, 2008]
+					- Bug fix: plugin will now work when different messages are set
+						for different protocols. (Thanks to Sachin for the tip)
+
+Version 1.2[May 5, 2008]
+					- Using IPC to get whether or not Winamp is playing. This message works fine and should cause the plugin
+						to run a little faster.
+
+Version 1.1[April 24, 2008]
+					- Apparently there are some issues with using IPC. It doesn't work if the song doesn't have an ID3 tag, it doesn't work
+						with the foobar plugins and if you look in the wa_ipc.h file it says the messages we're using aren't even supposed
+						to be used to external programs.
+					- So, I switched back to the old way to get the song information with a few small improvements.
+
+Version 1.0[March 31, 2008]
+					- Using IPC to get Winamp info. Much more reliable and don't have parse the title string anymore
+						(Thanks to Leonardo Fernandes for the IPC code)
+					- Some code cleanup for my string functions
+					- Using some #defines now instead of variables
+					- Just using one GList now to store info for each account. Much more efficient
+					- Now catches the "status-changed" signal to update right away when the user changes his status info
+					- All status types should now work
+					- Changed how some things are stored in order to save memory
+
+Version 0.7[May 8, 2007]
+					- Tried to fix international character issue but still not sure if it's working
+					- Converted everything over to work for Pidgin/Purple
+					- Removed the broken foobar support, use a winamp emulation plugin for
+						foobar from now on
+					- Changed to new website in the info
+
+Version 0.6[October 19, 2006]
+					- Added privacy option for users to hide what they're listening to with an option
+						on the Tools menu
+					-Compiled for Gaim2.0.0beta4
+
+Version 0.5[March 31, 2006]
+					- Added support for multiple accounts
+					- Mostly fixed bug where errors would occur if a non-ASCII character was in a song title
+						Still seems to occur sporadically, though. Will keep working on it
+					- Fixed for foobar2000 v0.9 (must use 0.9 now)
+
+Version 0.4.1[March 3, 2006]
+					- Fixed bug where if the user changed from away to available and vice-versa
+						while keeping the message the same it wouldn't update until the song changed.
+					- Updated summary and description
+
+Version 0.4[March 1, 2006]
+					- Made hiding text more efficient
+					- Available and Away Messages now work the same way as User Info, just put in the tags and
+						they will be replaced.
+					- Updates every 15 seconds
+					- Separator for parsing the winamp window is now " - " instead of just '-' to fix problems
+						with hyphenated song names (thanks to Kyle H. for the tip)
+					- Now works with foobar2000 (thanks to Matthew C. for the tip)
+
+Version 0.3.2[November 14, 2005]
+					- Fixed bug where plugin wouldn't update right after signing off and signing back on
+					- Added more code comments
+
+Version 0.3.1[November 9, 2005]
+					- Stopped it from sending an update to the server every 30 seconds even when one wasn't needed
+
+Version 0.3[November 9, 2005]
+					- Added a lot of extra customization:
+						Now %so% gets replaced with the song, %ar% with the artist.
+						(mi),(/mi),(ns), and (/ns) can be used to mark text for hiding/showing
+						depending on whether you're listening to music or not
+					- minor bug fixes
+
+Version 0.2[October 17, 2005]
+					- Checks to make sure that there is any user info before updating it.
+						This will speed things up a bit and fix a nasty bug that occurred 
+						when the protocol didn't support user info.
+					- Will only attempt to run on the first account that signs on.
+						Multiple accounts will be supported eventually, but for now this
+						is needed to prevent multiple calls to my non-thread-safe functions
+						and to stop it from getting really confused and screwing stuff up
+						if the profiles are updated at different times.
+					- Used more length checking to prevent buffer overflows
+					- Made string sizes smarter
+					- A little bit of code cleanup
+
+Version 0.1[October 6, 2005]
+					- First release
